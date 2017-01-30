@@ -176,8 +176,16 @@ def longest_ORF(dna):
     >>> longest_ORF("ATGCGAATGTAGCATCAAA")
     'ATGCTACATTCGCAT'
     """
-    # TODO: implement this
-    pass
+    all_ORFs=find_all_ORFs_both_strands(dna)
+    # print("__________________________________")
+    # print(all_ORFs)
+    # print("__________________________________")
+    current_longest = 0
+    for i in range(len(all_ORFs)):
+        if len(all_ORFs[i])>current_longest:
+            current_longest = i
+    return all_ORFs[current_longest]
+
 
 
 def longest_ORF_noncoding(dna, num_trials):
@@ -220,4 +228,4 @@ def gene_finder(dna):
 
 if __name__ == "__main__":
     import doctest
-    doctest.run_docstring_examples(find_all_ORFs_both_strands, globals(),verbose=True)
+    doctest.run_docstring_examples(longest_ORF, globals(),verbose=True)
